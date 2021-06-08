@@ -1,0 +1,166 @@
+.header {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    transition: all 0.5s ease;
+    padding-bottom: 3px;
+    height: 65px;
+    @media (min-width: $media-mb) {
+        overflow: hidden;
+    }
+    &.active {
+        .header__nav-list {
+            box-shadow: 0 0 3px;
+            transform: translate(0, 0);
+            @media (max-width: $media-mb) {
+                transform: translate(0, 0);
+            }
+        }
+        .header__logo-wrapper {
+            &:after {
+                transform: translateX(0);
+            }
+        }
+    }
+
+    &__flex {
+        width: 100%;
+    }
+
+    &__logo-wrapper {
+        background-color: #e9e9e9f5;
+        position: relative;
+        z-index: 1001;
+        width: 10%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 0 3px;
+        top: -1px;
+        &:after {
+            content: "";
+            width: 100%;
+            height: 100%;
+            background-color: #61e6e1;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translateX(-100%);
+            transition: all 0.3s ease;
+        }
+        transform: translateX(-120%);
+        opacity: 0;
+        transition: all 0.8s ease 3s;
+        @media (max-width: $media-mb) {
+            width: 20%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+    }
+
+    &__logo {
+        cursor: pointer;
+        text-decoration: none;
+        height: 60px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 1010;
+
+        & img {
+            transition: all 0.5s ease;
+        }
+        @media (min-width: $media-big-tb) {
+            &:hover {
+                text-decoration: none;
+                & img {
+                    transform: rotate(360deg);
+                }
+            }
+        }
+    }
+
+    &__nav-list {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        transition: all 0.5s ease;
+        position: absolute;
+        width: 90%;
+        height: 60px;
+        top: 0;
+        right: 0;
+        z-index: 1000;
+        transform: translateX(-200%);
+        background-color: #e9e9e9f5;
+        @media (max-width: $media-mb) {
+            display: block;
+            width: 80%;
+            height: auto;
+            transform: translateX(200%);
+        }
+    }
+
+    &__nav-item {
+        margin-right: 20px;
+        a {
+            font-size: 12px;
+            font-weight: 600;
+            color: $black;
+            text-transform: uppercase;
+            position: relative;
+            letter-spacing: 2px;
+            &:after {
+                content: "";
+                width: 0;
+                height: 1px;
+                background-color: $black;
+                position: absolute;
+                bottom: -2px;
+                left: 0;
+                transition: width 0.3s ease 0s;
+            }
+            &.active {
+                &:after {
+                    width: 100%;
+                }
+            }
+            @media (min-width: $media-big-tb) {
+                &:hover {
+                    &:after {
+                        width: 100%;
+                    }
+                }
+            }
+            @media (max-width: $media-mb) {
+                height: 100%;
+                padding: 10px 40px;
+            }
+            @media(max-width: 300px){
+                font-size: 11px;
+            }
+        }
+        @media (max-width: $media-mb) {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+            padding: 10px 20px;
+            background-color: #e9e9e9f5;
+            z-index: 1;
+            &:first-child {
+                padding-top: 20px;
+            }
+            &:last-child {
+                padding-bottom: 20px;
+            }
+        }
+    }
+}
